@@ -15,7 +15,7 @@
             --cor-destaque: #63229c;       /* Roxo principal */
             --cor-destaque-neon: #ff1008;  /* Vermelho/Roxo Neon para hover */
             --cor-fundo: #FFFFFF;          /* Fundo Branco */
-            --cor-fundo-suave: #F4F4F9;    /* Fundo cinza bem claro para blocos */
+            --cor-fundo-suave: #F4F4F9;    /* Fundo cinza bem claro para blocks */
             --fonte-principal: 'Montserrat', sans-serif;
         }
 
@@ -580,7 +580,7 @@
         <div class="box-formulario">
             <h3>Suba de <span>Nível</span></h3>
             
-            <form action="https://formspree.io/f/mojbnakr" method="POST" enctype="multipart/form-data">
+            <form action="https://formspree.io/f/mojbnakr" method="POST">
                 
                 <div class="grupo-campo">
                     <label for="nome">Nome Completo</label>
@@ -593,12 +593,13 @@
                 </div>
 
                 <div class="grupo-campo">
-                    <label>Print do Strava ou Fitapp</label>
-                    <div class="campo-file-custom">
-                        <i class="fa-solid fa-cloud-arrow-up"></i>
-                        <span id="nome-arquivo">Clique aqui para enviar o Print</span>
-                        <input type="file" id="print-app" name="Print_Corrida" accept="image/*" required onchange="atualizarNomeArquivo(this)">
-                    </div>
+                    <label for="pace">Qual é o seu Pace médio? (ex: 5:30 min/km)</label>
+                    <input type="text" id="pace" name="Pace_Medio" placeholder="Digite seu pace ou digite 'Não sei'" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="distancia">Qual distância máxima você costuma correr? (ex: 5km)</label>
+                    <input type="text" id="distancia" name="Distancia_Maxima" placeholder="Digite a distância ou digite 'Iniciante'" required>
                 </div>
 
                 <div class="grupo-campo">
@@ -620,18 +621,6 @@
     </footer>
 
     <script>
-        // Função simples para mudar o texto do upload de arquivo quando o usuário seleciona a imagem
-        function atualizarNomeArquivo(input) {
-            const label = document.getElementById('nome-arquivo');
-            if (input.files && input.files.length > 0) {
-                label.textContent = "Arquivo selecionado: " + input.files[0].name;
-                label.style.color = "#63229c";
-            } else {
-                label.textContent = "Clique aqui para enviar o Print";
-                label.style.color = "#475569";
-            }
-        }
-
         // Observador de rolagem suave (Animações de entrada)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
