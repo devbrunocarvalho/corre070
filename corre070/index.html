@@ -312,7 +312,7 @@
             font-size: 1rem;
         }
 
-        /* --- SEÇÃO FORMULÁRIO RESPONSIVO --- */
+        /* --- SEÇÃO FORMULÁRIO RESPONSIVO & CALCULADORA --- */
         .container-form {
             background-color: var(--cor-fundo-suave);
             padding: 20px 10% 100px 10%;
@@ -359,8 +359,9 @@
         }
 
         .grupo-campo input[type="text"],
-        .grupo-campo input[type="tel"],
-        .grupo-campo textarea {
+        .grupo-campo input[type="email"],
+        .grupo-campo input[type="number"],
+        .grupo-campo input[type="tel"] {
             font-family: var(--fonte-principal);
             padding: 14px 16px;
             border: 2px solid #cbd5e1;
@@ -373,61 +374,22 @@
         }
 
         .grupo-campo input[type="text"]:focus,
-        .grupo-campo input[type="tel"]:focus,
-        .grupo-campo textarea:focus {
+        .grupo-campo input[type="email"]:focus,
+        .grupo-campo input[type="number"]:focus,
+        .grupo-campo input[type="tel"]:focus {
             border-color: var(--cor-destaque);
             box-shadow: 0 0 0 4px rgba(99, 34, 156, 0.1);
         }
 
-        .grupo-campo textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        /* Estilização Customizada e Fluida para Upload de Arquivo */
-        .campo-file-custom {
-            position: relative;
-            border: 2px dashed var(--cor-destaque);
-            padding: 20px;
-            background: rgba(99, 34, 156, 0.02);
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-            transition: background 0.3s, border-color 0.3s;
-        }
-
-        .campo-file-custom:hover {
-            background: rgba(99, 34, 156, 0.06);
-            border-color: var(--cor-destaque-neon);
-        }
-
-        .campo-file-custom i {
-            font-size: 1.8rem;
-            color: var(--cor-destaque);
-            margin-bottom: 8px;
-        }
-
-        .campo-file-custom span {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #475569;
-        }
-
-        .campo-file-custom input[type="file"] {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .btn-enviar {
+        /* Âncoras Customizadas com comportamento de Botão */
+        .ancora-botao {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
             background-color: var(--cor-destaque);
             color: white;
-            border: none;
+            text-decoration: none;
             width: 100%;
             padding: 16px;
             border-radius: 50px;
@@ -440,16 +402,61 @@
             transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
             box-shadow: 0 4px 15px rgba(99, 34, 156, 0.25);
             margin-top: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
+            text-align: center;
         }
 
-        .btn-enviar:hover {
+        .ancora-botao:hover {
             background-color: var(--cor-destaque-neon);
             transform: scale(1.01);
             box-shadow: 0 6px 20px rgba(255, 16, 8, 0.25);
+        }
+
+        .ancora-botao.btn-secundario {
+            background-color: #334155;
+            box-shadow: 0 4px 15px rgba(51, 65, 85, 0.25);
+        }
+        .ancora-botao.btn-secundario:hover {
+            background-color: var(--cor-principal);
+        }
+
+        /* Painel de Resultados da Calculadora */
+        .resultados-zonas {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: var(--cor-fundo-suave);
+            border-radius: 12px;
+            border-left: 6px solid var(--cor-destaque);
+            display: none;
+        }
+
+        .resultados-zonas h4 {
+            font-size: 1.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: var(--cor-principal);
+        }
+
+        .item-zona {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        .item-zona:last-child {
+            border-bottom: none;
+        }
+
+        .nome-zona {
+            font-weight: 700;
+        }
+
+        .valores-zona {
+            font-weight: 900;
+            color: var(--cor-destaque);
         }
 
         /* --- FOOTER --- */
@@ -471,7 +478,6 @@
            --- MEDIA QUERIES PARA RESPONSIVIDADE COMPLETA ---
            ========================================================================== */
         
-        /* Tablets de telas grandes e Desktops Médios */
         @media (max-width: 1024px) {
             .hero h1 { font-size: 3.2rem; }
             .detalhes { grid-template-columns: repeat(2, 1fr); gap: 20px; }
@@ -479,12 +485,11 @@
             .bloco-info { min-height: 200px; padding: 30px 20px; }
         }
 
-        /* Tablets normais e Smartphones em modo Paisagem */
         @media (max-width: 768px) {
             body { padding-top: 70px; }
             header { padding: 12px 5%; height: 70px; }
             .logo-placeholder img { max-height: 32px; }
-            nav { display: none; } /* Oculta menu comum para Mobile */
+            nav { display: none; }
             
             .hero h1 { font-size: 2.5rem; }
             .hero p { font-size: 1.1rem; }
@@ -501,7 +506,6 @@
             .box-formulario h3 { font-size: 1.6rem; margin-bottom: 20px; }
         }
 
-        /* Smartphones Pequenos */
         @media (max-width: 480px) {
             .hero h1 { font-size: 2rem; }
             .btn-principal { width: 100%; text-align: center; padding: 16px 20px; font-size: 0.9rem; }
@@ -531,7 +535,7 @@
 
     <section id="sobre" class="sobre hidden-scroll">
         <h2 class="secao-titulo">Sobre o c<span>O</span>RRE07<span>0</span></h2>
-        <p>Inspirado no movimento urbano e na paixão pela corrida, trouxemos para <span>Águas Lindas</span> o CORRE 070 que une atletas de todos os níveis. Nosso foco é evolução constante, saúde, música e a energia do asfalto. Venha fazer parte dessa comunidade que não para de crescer.</p>
+        <p>Inspirado no movemento urbano e na paixão pela corrida, trouxemos para <span>Águas Lindas</span> o CORRE 070 que une atletas de todos os níveis. Nosso foco é evolução constante, saúde, música e a energia do asfalto. Venha fazer parte dessa comunidade que não para de crescer.</p>
     </section>
 
     <section id="proximo-treino" class="onde-quando hidden-scroll">
@@ -578,13 +582,18 @@
 
     <div class="container-form hidden-scroll">
         <div class="box-formulario">
-            <h3>Suba de <span>Nível</span></h3>
+            <h3>Zonas de <span>Corrida</span></h3>
             
-            <form action="https://formspree.io/f/mojbnakr" method="POST">
+            <form id="form-calculadora" action="https://formspree.io/f/mojbnakr" method="POST">
                 
                 <div class="grupo-campo">
                     <label for="nome">Nome Completo</label>
                     <input type="text" id="nome" name="Nome" placeholder="Digite seu nome completo" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="Email" placeholder="seu-email@exemplo.com" required>
                 </div>
 
                 <div class="grupo-campo">
@@ -593,25 +602,49 @@
                 </div>
 
                 <div class="grupo-campo">
-                    <label for="pace">Qual é o seu Pace médio? (ex: 5:30 min/km)</label>
-                    <input type="text" id="pace" name="Pace_Medio" placeholder="Digite seu pace ou digite 'Não sei'" required>
+                    <label for="idade">Qual sua Idade?</label>
+                    <input type="number" id="idade" name="Idade" placeholder="Ex: 30" min="1" max="120" required>
                 </div>
 
-                <div class="grupo-campo">
-                    <label for="distancia">Qual distância máxima você costuma correr? (ex: 5km)</label>
-                    <input type="text" id="distancia" name="Distancia_Maxima" placeholder="Digite a distância ou digite 'Iniciante'" required>
-                </div>
-
-                <div class="grupo-campo">
-                    <label for="mensagem">Como podemos te ajudar na corrida?</label>
-                    <textarea id="mensagem" name="Como_Ajudar" placeholder="Conte-nos sobre seus objetivos na corrida..." required></textarea>
-                </div>
-
+                <input type="hidden" id="hidden-fcm" name="Frequencia_Cardiaca_Maxima">
+                <input type="hidden" id="hidden-z1" name="Zona_1_Regenerativa">
+                <input type="hidden" id="hidden-z2" name="Zona_2_Aerobica_Leve">
+                <input type="hidden" id="hidden-z3" name="Zona_3_Aerobica_Moderada">
+                <input type="hidden" id="hidden-z4" name="Zona_4_Limiar_Anaerobico">
+                <input type="hidden" id="hidden-z5" name="Zona_5_Esforco_Maximo">
                 <input type="hidden" name="_replyto" value="tfxacessoria@gmail.com">
 
-                <button type="submit" class="btn-enviar">
-                    Enviar Dados <i class="fa-solid fa-paper-plane"></i>
-                </button>
+                <a href="javascript:void(0);" onclick="calcularZonasCorrida()" class="ancora-botao btn-secundario">
+                    Calcular Zonas <i class="fa-solid fa-calculator"></i>
+                </a>
+
+                <div id="resultados-painel" class="resultados-zonas">
+                    <h4>Suas Zonas de Treino (BPM)</h4>
+                    <div class="item-zona">
+                        <span class="nome-zona">Z1 - Regenerativo (50% - 60%)</span>
+                        <span id="res-z1" class="valores-zona">--</span>
+                    </div>
+                    <div class="item-zona">
+                        <span class="nome-zona">Z2 - Ritmo Leve / Lipólise (60% - 70%)</span>
+                        <span id="res-z2" class="valores-zona">--</span>
+                    </div>
+                    <div class="item-zona">
+                        <span class="nome-zona">Z3 - Moderado / Aeróbico (70% - 80%)</span>
+                        <span id="res-z3" class="valores-zona">--</span>
+                    </div>
+                    <div class="item-zona">
+                        <span class="nome-zona">Z4 - Limiar Anaeróbico (80% - 90%)</span>
+                        <span id="res-z4" class="valores-zona">--</span>
+                    </div>
+                    <div class="item-zona">
+                        <span class="nome-zona">Z5 - Esforço Máximo (90% - 100%)</span>
+                        <span id="res-z5" class="valores-zona">--</span>
+                    </div>
+                </div>
+
+                <a href="javascript:void(0);" onclick="enviarFormulario()" class="ancora-botao" style="margin-top: 20px;">
+                    Enviar Resultado por E-mail <i class="fa-solid fa-paper-plane"></i>
+                </a>
             </form>
         </div>
     </div>
@@ -636,6 +669,77 @@
 
         const hiddenElements = document.querySelectorAll('.hidden-scroll');
         hiddenElements.forEach((el) => observer.observe(el));
+
+        // LÓGICA DA CALCULADORA DE ZONAS DE CORRIDA
+        function calcularZonasCorrida() {
+            const idadeInput = document.getElementById('idade');
+            const idade = parseInt(idadeInput.value);
+
+            if (!idade || idade <= 0) {
+                alert('Por favor, digite uma idade válida antes de calcular.');
+                idadeInput.focus();
+                return;
+            }
+
+            // Fórmula clássica da FCM (Frequência Cardíaca Máxima)
+            const fcm = 220 - idade;
+
+            // Cálculos das faixas de esforço (BPM)
+            const z1Min = Math.round(fcm * 0.50);
+            const z1Max = Math.round(fcm * 0.60);
+            const z2Min = Math.round(fcm * 0.60);
+            const z2Max = Math.round(fcm * 0.70);
+            const z3Min = Math.round(fcm * 0.70);
+            const z3Max = Math.round(fcm * 0.80);
+            const z4Min = Math.round(fcm * 0.80);
+            const z4Max = Math.round(fcm * 0.90);
+            const z5Min = Math.round(fcm * 0.90);
+            const z5Max = fcm;
+
+            // Formatação de strings
+            const strZ1 = `${z1Min} - ${z1Max} bpm`;
+            const strZ2 = `${z2Min} - ${z2Max} bpm`;
+            const strZ3 = `${z3Min} - ${z3Max} bpm`;
+            const strZ4 = `${z4Min} - ${z4Max} bpm`;
+            const strZ5 = `${z5Min} - ${z5Max} bpm`;
+
+            // Exibe os valores dinamicamente no painel visual da página
+            document.getElementById('res-z1').innerText = strZ1;
+            document.getElementById('res-z2').innerText = strZ2;
+            document.getElementById('res-z3').innerText = strZ3;
+            document.getElementById('res-z4').innerText = strZ4;
+            document.getElementById('res-z5').innerText = strZ5;
+
+            // Alimenta os campos ocultos do formulário para envio no e-mail
+            document.getElementById('hidden-fcm').value = `${fcm} bpm`;
+            document.getElementById('hidden-z1').value = strZ1;
+            document.getElementById('hidden-z2').value = strZ2;
+            document.getElementById('hidden-z3').value = strZ3;
+            document.getElementById('hidden-z4').value = strZ4;
+            document.getElementById('hidden-z5').value = strZ5;
+
+            // Torna o painel de resultados visível com animação simples
+            document.getElementById('resultados-painel').style.display = 'block';
+        }
+
+        // Validação manual e submissão através da âncora de disparo
+        function enviarFormulario() {
+            const form = document.getElementById('form-calculadora');
+            
+            // Verifica se os campos obrigatórios estão preenchidos nativamente
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // Garante que o cálculo foi executado antes do envio externo
+            if (!document.getElementById('hidden-fcm').value) {
+                calcularZonasCorrida();
+            }
+
+            // Dispara o envio oficial do formulário para o Formspree
+            form.submit();
+        }
     </script>
 
 </body>
