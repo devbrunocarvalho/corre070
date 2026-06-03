@@ -17,6 +17,11 @@
             --cor-fundo: #FFFFFF;          /* Fundo Branco */
             --cor-fundo-suave: #F4F4F9;    /* Fundo cinza bem claro para blocks */
             --fonte-principal: 'Montserrat', sans-serif;
+            
+            /* Novas cores para o botão TFX */
+            --cor-tfx-fundo: #000000;
+            --cor-tfx-texto: #ffffff;
+            --cor-tfx-hover: #ff1008; /* Vermelho */
         }
 
         * {
@@ -137,9 +142,16 @@
             color: #111;
         }
 
-        .btn-principal {
-            background-color: var(--cor-destaque);
-            color: white;
+        /* Container para os botões ficarem lado a lado */
+        .hero-botoes {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Estilo base dos botões grandes do Hero */
+        .btn-hero {
             padding: 16px 45px;
             border-radius: 50px;
             text-decoration: none;
@@ -148,11 +160,34 @@
             letter-spacing: 1px;
             font-size: 0.95rem;
             transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Botão Original (Roxo) */
+        .btn-principal {
+            background-color: var(--cor-destaque);
+            color: white;
             box-shadow: 0 6px 20px rgba(99, 34, 156, 0.3);
         }
 
         .btn-principal:hover {
             background-color: var(--cor-destaque-neon);
+            transform: scale(1.03);
+            box-shadow: 0 6px 25px rgba(255, 16, 8, 0.3);
+        }
+
+        /* Novo Botão TFX (Preto e Vermelho) */
+        .btn-tfx {
+            background-color: var(--cor-tfx-fundo);
+            color: var(--cor-tfx-texto);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-tfx:hover {
+            color: var(--cor-tfx-texto); /* Mantém texto branco */
+            background-color: var(--cor-tfx-hover); /* Fundo Vermelho */
             transform: scale(1.03);
             box-shadow: 0 6px 25px rgba(255, 16, 8, 0.3);
         }
@@ -504,11 +539,13 @@
             .container-form { padding: 10px 5% 80px 5%; }
             .box-formulario { padding: 30px 20px; border-radius: 12px; }
             .box-formulario h3 { font-size: 1.6rem; margin-bottom: 20px; }
+            
+            .hero-botoes { gap: 10px; }
+            .btn-hero { width: 100%; padding: 16px 20px; }
         }
 
         @media (max-width: 480px) {
             .hero h1 { font-size: 2rem; }
-            .btn-principal { width: 100%; text-align: center; padding: 16px 20px; font-size: 0.9rem; }
             .secao-titulo { font-size: 1.8rem; }
             .bloco-info .dado { font-size: 1.6rem; }
         }
@@ -530,12 +567,17 @@
     <section class="hero">
         <h1>Descubra o Seu <span>Próximo Nível</span></h1>
         <p>Não importa o seu ritmo. O projeto CORRE 070 foi feito para quem quer evoluir no asfalto, superar limites e correr junto.</p>
-        <a href="https://chat.whatsapp.com/KugI861oGQK4JuZUQj1Rp4?mode=gi_t" class="btn-principal">Entre no nosso grupo!</a>
+        
+        <!-- Container de botões atualizado -->
+        <div class="hero-botoes">
+            <a href="https://chat.whatsapp.com/KugI861oGQK4JuZUQj1Rp4?mode=gi_t" class="btn-hero btn-principal">Entre no nosso grupo!</a>
+            <a href="https://instagram.com/tfx_assessoriaesportiva" target="_blank" class="btn-hero btn-tfx">VEM CONHECER A TFX</a>
+        </div>
     </section>
 
     <section id="sobre" class="sobre hidden-scroll">
         <h2 class="secao-titulo">Sobre o c<span>O</span>RRE07<span>0</span></h2>
-        <p>Inspirado no movemento urbano e na paixão pela corrida, trouxemos para <span>Águas Lindas</span> o CORRE 070 que une atletas de todos os níveis. Nosso foco é evolução constante, saúde, música e a energia do asfalto. Venha fazer parte dessa comunidade que não para de crescer.</p>
+        <p>Inspirado no movimento urbano e na paixão pela corrida, trouxemos para <span>Águas Lindas</span> o CORRE 070 que une atletas de todos os níveis. Nosso foco é evolução constante, saúde, música e a energia do asfalto. Venha fazer parte dessa comunidade que não para de crescer.</p>
     </section>
 
     <section id="proximo-treino" class="onde-quando hidden-scroll">
@@ -570,7 +612,7 @@
             <h3>Naiany Brito</h3>
             <p>"Me chamo Naiany e participei da minha primeira corrida. Nunca imaginei que iria gostar tanto dessa experiência!
             Sou muito grata a Deus por me proporcionar esse momento e a todos os
-            envolvidos nessa iniciativa tão especial. Conseguir correr no meu ritmo, me superar e para tornar tudo ainda mais especial, tive a alegria
+            envolvidos nessa initiative tão especial. Conseguir correr no meu ritmo, me superar e para tornar tudo ainda mais especial, tive a alegria
             de compartilhar esse momento ao lado da minha mãe. Foi uma experiência incrivel, cheia de aprendizado, superação e felicidade. Agora já estou ansiosa pela próxima."</p>
         </div>
         <div class="card hidden-scroll">
