@@ -394,9 +394,7 @@
         }
 
         .grupo-campo input[type="text"],
-        .grupo-campo input[type="email"],
-        .grupo-campo input[type="number"],
-        .grupo-campo input[type="tel"] {
+        .grupo-campo input[type="number"] {
             font-family: var(--fonte-principal);
             padding: 14px 16px;
             border: 2px solid #cbd5e1;
@@ -409,9 +407,7 @@
         }
 
         .grupo-campo input[type="text"]:focus,
-        .grupo-campo input[type="email"]:focus,
-        .grupo-campo input[type="number"]:focus,
-        .grupo-campo input[type="tel"]:focus {
+        .grupo-campo input[type="number"]:focus {
             border-color: var(--cor-destaque);
             box-shadow: 0 0 0 4px rgba(99, 34, 156, 0.1);
         }
@@ -568,7 +564,6 @@
         <h1>Descubra o Seu <span>Próximo Nível</span></h1>
         <p>Não importa o seu ritmo. O projeto CORRE 070 foi feito para quem quer evoluir no asfalto, superar limites e correr junto.</p>
         
-        <!-- Container de botões atualizado -->
         <div class="hero-botoes">
             <a href="https://chat.whatsapp.com/KugI861oGQK4JuZUQj1Rp4?mode=gi_t" class="btn-hero btn-principal">Entre no nosso grupo!</a>
             <a href="https://instagram.com/tfx_assessoriaesportiva" target="_blank" class="btn-hero btn-tfx">VEM CONHECER A TFX</a>
@@ -586,7 +581,7 @@
         <div class="grid-evento">
             <div class="bloco-info">
                 <span class="label">Data</span>
-                <span class="dado">16 De Junho</span>
+                <span class="dado">19 De Junho</span>
             </div>
             
             <div class="bloco-info">
@@ -612,7 +607,7 @@
             <h3>Naiany Brito</h3>
             <p>"Me chamo Naiany e participei da minha primeira corrida. Nunca imaginei que iria gostar tanto dessa experiência!
             Sou muito grata a Deus por me proporcionar esse momento e a todos os
-            envolvidos nessa iniciativa tão especial. Consegui correr no meu ritmo, me superar e para tornar tudo ainda mais especial, tive a alegria
+            envolvidos nessa initiative tão especial. Consegui correr no meu ritmo, me superar e para tornar tudo ainda mais especial, tive a alegria
             de compartilhar esse momento ao lado da minha mãe. Foi uma experiência incrivel, cheia de aprendizado, superação e felicidade. Agora já estou ansiosa pela próxima."</p>
         </div>
         <div class="card hidden-scroll">
@@ -629,21 +624,11 @@
         <div class="box-formulario">
             <h3>Zonas de <span>Corrida</span></h3>
             
-            <form id="form-calculadora" action="https://formspree.io/f/mojbnakr" method="POST">
+            <form id="form-calculadora" onsubmit="event.preventDefault();">
                 
                 <div class="grupo-campo">
                     <label for="nome">Nome Completo</label>
                     <input type="text" id="nome" name="Nome" placeholder="Digite seu nome completo" required>
-                </div>
-
-                <div class="grupo-campo">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="Email" placeholder="seu-email@exemplo.com" required>
-                </div>
-
-                <div class="grupo-campo">
-                    <label for="telefone">Telefone / WhatsApp</label>
-                    <input type="tel" id="telefone" name="Telefone" placeholder="(00) 00000-0000" required>
                 </div>
 
                 <div class="grupo-campo">
@@ -657,7 +642,6 @@
                 <input type="hidden" id="hidden-z3" name="Zona_3_Aerobica_Moderada">
                 <input type="hidden" id="hidden-z4" name="Zona_4_Limiar_Anaerobico">
                 <input type="hidden" id="hidden-z5" name="Zona_5_Esforco_Maximo">
-                <input type="hidden" name="_replyto" value="tfxacessoria@gmail.com">
 
                 <a href="javascript:void(0);" onclick="calcularZonasCorrida()" class="ancora-botao btn-secundario">
                     Calcular Zonas <i class="fa-solid fa-calculator"></i>
@@ -755,7 +739,7 @@
             document.getElementById('res-z4').innerText = strZ4;
             document.getElementById('res-z5').innerText = strZ5;
 
-            // Alimenta os campos ocultos do formulário para envio no e-mail
+            // Alimenta os campos ocultos do formulário
             document.getElementById('hidden-fcm').value = `${fcm} bpm`;
             document.getElementById('hidden-z1').value = strZ1;
             document.getElementById('hidden-z2').value = strZ2;
@@ -767,7 +751,7 @@
             document.getElementById('resultados-painel').style.display = 'block';
         }
 
-        // Validação manual e submissão através da âncora de disparo
+        // Validação manual e submissão através da âncora de disparo direto para o WhatsApp
         function enviarFormulario() {
             const form = document.getElementById('form-calculadora');
             
@@ -782,8 +766,34 @@
                 calcularZonasCorrida();
             }
 
-            // Dispara o envio oficial do formulário para o Formspree
-            form.submit();
+            // Coleta os dados para enviar via WhatsApp
+            const nome = document.getElementById('nome').value;
+            const idade = document.getElementById('idade').value;
+            const fcm = document.getElementById('hidden-fcm').value;
+            const z1 = document.getElementById('hidden-z1').value;
+            const z2 = document.getElementById('hidden-z2').value;
+            const z3 = document.getElementById('hidden-z3').value;
+            const z4 = document.getElementById('hidden-z4').value;
+            const z5 = document.getElementById('hidden-z5').value;
+
+            // Monta o texto codificado para a URL do WhatsApp
+            const numeroTelefone = "5561981732248";
+            const mensagemTexto = `Olá! Acabei de calcular minhas Zonas de Corrida no site:\n\n` +
+                                  `🏃‍♂️ *Nome:* ${nome}\n` +
+                                  `🎂 *Idade:* ${idade} anos\n` +
+                                  `💓 *FCM (Máxima):* ${fcm}\n\n` +
+                                  `📊 *ZONAS DE TREINO:*\n` +
+                                  `🔹 *Z1 (Regenerativo):* ${z1}\n` +
+                                  `🔹 *Z2 (Ritmo Leve):* ${z2}\n` +
+                                  `🔹 *Z3 (Moderado):* ${z3}\n` +
+                                  `🔹 *Z4 (Limiar Anaeróbico):* ${z4}\n` +
+                                  `🔹 *Z5 (Esforço Máximo):* ${z5}\n\n` +
+                                  `Quero descobrir como medir meus batimentos corretamente!`;
+
+            const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefone}&text=${encodeURIComponent(mensagemTexto)}`;
+
+            // Redireciona o usuário para o WhatsApp em uma nova aba
+            window.open(urlWhatsApp, '_blank');
         }
     </script>
 
