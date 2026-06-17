@@ -202,9 +202,9 @@
         .secao-titulo {
             font-size: 2.5rem;
             font-weight: 900;
-            margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: -0.5px;
+            margin-bottom: 25px;
         }
 
         .secao-titulo span {
@@ -347,10 +347,90 @@
             font-size: 1rem;
         }
 
+        /* --- SEÇÃO FOTOS DO EVENTO --- */
+        .fotos-evento {
+            padding: 60px 10% 80px 10%;
+            background-color: var(--cor-fundo);
+        }
+
+        .tabela-fotos {
+            display: table;
+            width: 100%;
+            border-spacing: 40px 0;
+            margin-top: 20px;
+        }
+
+        .coluna-midia {
+            display: table-cell;
+            width: 50%;
+            vertical-align: middle;
+        }
+
+        .ancora-fotos {
+            display: inline-block;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--cor-principal);
+            text-decoration: none;
+            text-transform: uppercase;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            transition: color 0.3s ease;
+            margin-bottom: 25px;
+        }
+
+        .ancora-fotos:hover {
+            color: var(--cor-destaque);
+        }
+
+        .link-instagram {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: #475569;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .link-instagram i {
+            font-size: 2rem;
+            color: var(--cor-destaque);
+            transition: color 0.3s ease;
+        }
+
+        .link-instagram:hover {
+            color: var(--cor-principal);
+            transform: translateX(4px);
+        }
+
+        .link-instagram:hover i {
+            color: var(--cor-destaque-neon);
+        }
+
+        .container-foto-pasta {
+            width: 100%;
+            background-color: var(--cor-fundo-suave);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
+            aspect-ratio: 4 / 3;
+            display: block;
+        }
+
+        .container-foto-pasta img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
         /* --- SEÇÃO FORMULÁRIO RESPONSIVO & CALCULADORA --- */
         .container-form {
             background-color: var(--cor-fundo-suave);
-            padding: 20px 10% 100px 10%;
+            padding: 80px 10% 100px 10%;
             display: flex;
             justify-content: center;
         }
@@ -514,6 +594,8 @@
             .detalhes { grid-template-columns: repeat(2, 1fr); gap: 20px; }
             .grid-evento { grid-template-columns: repeat(2, 1fr); }
             .bloco-info { min-height: 200px; padding: 30px 20px; }
+            .tabela-fotos { border-spacing: 20px 0; }
+            .ancora-fotos { font-size: 1.8rem; }
         }
 
         @media (max-width: 768px) {
@@ -532,7 +614,17 @@
             .link-mapa { margin-top: 15px; }
 
             .detalhes { grid-template-columns: 1fr; padding: 60px 5% 20px 5%; gap: 20px; }
-            .container-form { padding: 10px 5% 80px 5%; }
+            
+            /* Ajustes da Seção de Fotos no Mobile */
+            .fotos-evento { padding: 50px 5% 50px 5%; }
+            .tabela-fotos, .coluna-midia { display: block; width: 100%; }
+            .tabela-fotos { margin-top: 10px; }
+            .coluna-midia:first-child { text-align: center; margin-bottom: 30px; }
+            .ancora-fotos { font-size: 1.6rem; margin-bottom: 15px; }
+            .link-instagram { justify-content: center; }
+            .container-foto-pasta { max-width: 500px; margin: 0 auto; }
+
+            .container-form { padding: 50px 5% 80px 5%; }
             .box-formulario { padding: 30px 20px; border-radius: 12px; }
             .box-formulario h3 { font-size: 1.6rem; margin-bottom: 20px; }
             
@@ -544,6 +636,7 @@
             .hero h1 { font-size: 2rem; }
             .secao-titulo { font-size: 1.8rem; }
             .bloco-info .dado { font-size: 1.6rem; }
+            .ancora-fotos { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -557,6 +650,7 @@
             <a href="#sobre">O Projeto</a>
             <a href="#proximo-treino">Próximo Corre</a>
             <a href="#detalhes">Diferenciais</a>
+            <a href="#fotos-evento">Fotos</a>
         </nav>
     </header>
 
@@ -607,7 +701,7 @@
             <h3>Naiany Brito</h3>
             <p>"Me chamo Naiany e participei da minha primeira corrida. Nunca imaginei que iria gostar tanto dessa experiência!
             Sou muito grata a Deus por me proporcionar esse momento e a todos os
-            envolvidos nessa initiative tão especial. Consegui correr no meu ritmo, me superar e para tornar tudo ainda mais especial, tive a alegria
+            envolvidos nessa iniciativa tão especial. Consegui correr no meu ritmo, me superar e para tornar tudo ainda mais especial, tive a alegria
             de compartilhar esse momento ao lado da minha mãe. Foi uma experiência incrivel, cheia de aprendizado, superação e felicidade. Agora já estou ansiosa pela próxima."</p>
         </div>
         <div class="card hidden-scroll">
@@ -617,6 +711,23 @@
         <div class="card hidden-scroll">
             <h3>Renata Sales</h3>
             <p>"O professor Tonny tem o dom de motivar, inspirar e arrastar multidões. Foi incrivel e será sempre incrível! Parabéns a todos os envolvidos, especialmente a você professor Tonny, você é presente de Deus."</p>
+        </div>
+    </section>
+
+    <section id="fotos-evento" class="fotos-evento">
+        <div class="tabela-fotos">
+            <div class="coluna-midia hidden-scroll">
+                <a href="https://ghoa.focoradical.com.br/" class="ancora-fotos">Veja as fotos do nosso evento</a>
+                <br>
+                <a href="https://instagram.com/gustavo.fotosport" target="_blank" class="link-instagram">
+                    <i class="fa-brands fa-instagram"></i> @gustavo.fotosport
+                </a>
+            </div>
+            <div class="coluna-midia hidden-scroll">
+                <div class="container-foto-pasta">
+                    <img src="./logo" alt="Foto do Evento Corre 070">
+                </div>
+            </div>
         </div>
     </section>
 
@@ -723,14 +834,14 @@
             const z4Min = Math.round(fcm * 0.80);
             const z4Max = Math.round(fcm * 0.90);
             const z5Min = Math.round(fcm * 0.90);
-            const z5Max = fcm;
+            const fcmMax = fcm;
 
             // Formatação de strings
             const strZ1 = `${z1Min} - ${z1Max} bpm`;
             const strZ2 = `${z2Min} - ${z2Max} bpm`;
             const strZ3 = `${z3Min} - ${z3Max} bpm`;
             const strZ4 = `${z4Min} - ${z4Max} bpm`;
-            const strZ5 = `${z5Min} - ${z5Max} bpm`;
+            const strZ5 = `${z5Min} - ${fcmMax} bpm`;
 
             // Exibe os valores dinamicamente no painel visual da página
             document.getElementById('res-z1').innerText = strZ1;
