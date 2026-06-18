@@ -430,7 +430,7 @@
         /* --- SEÇÃO FORMULÁRIO RESPONSIVO & CALCULADORA --- */
         .container-form {
             background-color: var(--cor-fundo-suave);
-            padding: 80px 10% 100px 10%;
+            padding: 80px 10% 40px 10%;
             display: flex;
             justify-content: center;
         }
@@ -530,7 +530,7 @@
             background-color: var(--cor-principal);
         }
 
-        /* Painel de Resultados da Calculadora */
+        /* Painel de Resultados da Calculadora e Sorteio */
         .resultados-zonas {
             margin-top: 30px;
             padding: 25px;
@@ -568,6 +568,78 @@
         .valores-zona {
             font-weight: 900;
             color: var(--cor-destaque);
+        }
+
+        /* Estilos específicos para a Seção de Sorteio */
+        .container-sorteio {
+            background-color: var(--cor-fundo-suave);
+            padding: 0 10% 100px 10%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .box-sorteio {
+            background: var(--cor-fundo);
+            width: 100%;
+            max-width: 650px;
+            padding: 45px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        }
+
+        .box-sorteio h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: var(--cor-principal);
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        .box-sorteio h3 span {
+            color: var(--cor-destaque);
+        }
+
+        .descricao-sorteio {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #475569;
+            margin-bottom: 30px;
+        }
+
+        .painel-ticket {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #000000;
+            color: #ffffff;
+            border-radius: 12px;
+            border-left: 6px solid var(--cor-destaque-neon);
+            text-align: center;
+            display: none;
+        }
+
+        .painel-ticket h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .numero-ticket {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 2px;
+            margin: 15px 0;
+            text-shadow: 0 0 10px rgba(255, 16, 8, 0.5);
+        }
+
+        .aviso-ticket {
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            font-weight: 400;
         }
 
         /* --- FOOTER --- */
@@ -624,9 +696,10 @@
             .link-instagram { justify-content: center; }
             .container-foto-pasta { max-width: 500px; margin: 0 auto; }
 
-            .container-form { padding: 50px 5% 80px 5%; }
-            .box-formulario { padding: 30px 20px; border-radius: 12px; }
-            .box-formulario h3 { font-size: 1.6rem; margin-bottom: 20px; }
+            .container-form { padding: 50px 5% 40px 5%; }
+            .container-sorteio { padding: 0 5% 80px 5%; }
+            .box-formulario, .box-sorteio { padding: 30px 20px; border-radius: 12px; }
+            .box-formulario h3, .box-sorteio h3 { font-size: 1.6rem; margin-bottom: 20px; }
             
             .hero-botoes { gap: 10px; }
             .btn-hero { width: 100%; padding: 16px 20px; }
@@ -637,6 +710,7 @@
             .secao-titulo { font-size: 1.8rem; }
             .bloco-info .dado { font-size: 1.6rem; }
             .ancora-fotos { font-size: 1.4rem; }
+            .numero-ticket { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -651,11 +725,12 @@
             <a href="#proximo-treino">Próximo Corre</a>
             <a href="#detalhes">Diferenciais</a>
             <a href="#fotos-evento">Fotos</a>
+            <a href="#sorteios">Sorteios</a>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>Descubra o Seu <span>Próximo Nível</span></h1>
+        <h1>Descubra o Seu <span>Próximo Nível em 2026</span></h1>
         <p>Não importa o seu ritmo. O projeto CORRE 070 foi feito para quem quer evoluir no asfalto, superar limites e correr junto.</p>
         
         <div class="hero-botoes">
@@ -670,7 +745,7 @@
     </section>
 
     <section id="proximo-treino" class="onde-quando hidden-scroll">
-        <h2 class="titulo-evento">Onde & <span>Quando</span><div class="badge-ep">EP.01</div></h2>
+        <h2 class="titulo-evento">Onde & <span>Quando</span><div class="badge-ep">EP.03</div></h2>
         
         <div class="grid-evento">
             <div class="bloco-info">
@@ -701,7 +776,7 @@
             <h3>Naiany Brito</h3>
             <p>"Me chamo Naiany e participei da minha primeira corrida. Nunca imaginei que iria gostar tanto dessa experiência!
             Sou muito grata a Deus por me proporcionar esse momento e a todos os
-            envolvidos nessa iniciativa tão especial. Consegui correr no meu ritmo, me superar e para tornar tudo ainda mais especial, tive a alegria
+            envolvidos nessa initiative tão especial. Consegui correr no meu ritmo, me superar e para tornar tudo ainda mais especial, tive a alegria
             de compartilhar esse momento ao lado da minha mãe. Foi uma experiência incrivel, cheia de aprendizado, superação e felicidade. Agora já estou ansiosa pela próxima."</p>
         </div>
         <div class="card hidden-scroll">
@@ -717,7 +792,7 @@
     <section id="fotos-evento" class="fotos-evento">
         <div class="tabela-fotos">
             <div class="coluna-midia hidden-scroll">
-                <a href="https://ghoa.focoradical.com.br/" class="ancora-fotos">Veja as fotos do nosso evento</a>
+                <a href="https://ghoa.focoradical.com.br/" class="ancora-fotos">Veja as fotos do nosso event</a>
                 <br>
                 <a href="https://instagram.com/gustavo.fotosport" target="_blank" class="link-instagram">
                     <i class="fa-brands fa-instagram"></i> @gustavo.fotosport
@@ -789,11 +864,49 @@
         </div>
     </div>
 
+    <div id="sorteios" class="container-sorteio hidden-scroll">
+        <div class="box-sorteio">
+            <h3>Participe do <span>Sorteio</span></h3>
+            <p class="descricao-sorteio">Digite seu primeiro nome, o ano em que nasceu e os 4 primeiros dígitos do seu celular para gerar seu número sequencial exclusivo.</p>
+            
+            <form id="form-sorteio" onsubmit="event.preventDefault();">
+                <div class="grupo-campo">
+                    <label for="sorteio-nome">Primeiro Nome</label>
+                    <input type="text" id="sorteio-nome" placeholder="Ex: Bruno" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="sorteio-ano">Ano de Nascimento</label>
+                    <input type="number" id="sorteio-ano" placeholder="Ex: 1996" min="1900" max="2026" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="sorteio-celular">Numero do Celular</label>
+                    <input type="number" id="sorteio-celular" placeholder="Ex: 9997" min="1000" max="9999" required>
+                </div>
+
+                <a href="javascript:void(0);" onclick="gerarTicketSorteio()" class="ancora-botao">
+                    Gerar Meu Número da Sorte <i class="fa-solid fa-ticket"></i>
+                </a>
+
+                <div id="painel-ticket" class="painel-ticket">
+                    <h4>Inscrição Confirmada!</h4>
+                    <p class="aviso-ticket">Seu número oficial para o sorteio é:</p>
+                    <div id="numero-ticket" class="numero-ticket">--</div>
+                    <p class="aviso-ticket">⚠️ Tire um print ou guarde esse número! Se preencher os mesmos dados novamente, seu número continuará sendo o mesmo.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <footer>
         <p>© 2026 <span>TFX ASSESSORIA ESPORTIVA</span>. Todos os direitos reservados. Feito para as pistas.</p>
     </footer>
 
     <script>
+        // URL da API do seu Google Apps Script (Substitua as aspas abaixo pelo seu link)
+        const URL_GOOGLE_SCRIPT = "COLE_AQUI_A_SUA_URL_DO_APPS_SCRIPT";
+
         // Observador de rolagem suave (Animações de entrada)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -905,6 +1018,62 @@
 
             // Redireciona o usuário para o WhatsApp em uma nova aba
             window.open(urlWhatsApp, '_blank');
+        }
+
+        // LÓGICA DO ENVIO DO FORMULÁRIO DE SORTEIO DIRETO PARA O GOOGLE SHEETS
+        async function gerarTicketSorteio() {
+            const formSorteio = document.getElementById('form-sorteio');
+
+            // Valida se o formulário está preenchido corretamente
+            if (!formSorteio.checkValidity()) {
+                formSorteio.reportValidity();
+                return;
+            }
+
+            const nomeInput = document.getElementById('sorteio-nome').value;
+            const anoInput = document.getElementById('sorteio-ano').value;
+            const celularInput = document.getElementById('sorteio-celular').value;
+
+            // Confere se a URL do Apps Script foi alterada
+            if (URL_GOOGLE_SCRIPT === "https://script.google.com/macros/s/AKfycbwUJFydR9V4yMinR5saIa9Nc-ZqnTWspywjTYapYK7s3ZbHRBwPJnYIg5ghCWip6A/exec") {
+                alert("Configuração incompleta: O administrador precisa configurar a URL do Google Apps Script nas linhas de código do site.");
+                return;
+            }
+
+            const dadosUsuario = {
+                nome: nomeInput,
+                ano: anoInput,
+                celular: celularInput
+            };
+
+            // Altera visualmente o painel para indicar processamento
+            const painelTicket = document.getElementById('painel-ticket');
+            const numeroDisplay = document.getElementById('numero-ticket');
+            numeroDisplay.innerText = "Processando...";
+            painelTicket.style.display = "block";
+
+            try {
+                const resposta = await fetch(URL_GOOGLE_SCRIPT, {
+                    method: 'POST',
+                    mode: 'cors',
+                    body: JSON.stringify(dadosUsuario)
+                });
+
+                const resultado = await resposta.json();
+
+                if (resultado.status === "sucesso" || resultado.status === "existente") {
+                    // Exibe o número sequencial retornado pela planilha
+                    numeroDisplay.innerText = resultado.bilhete.toString().padStart(3, '0');
+                } else {
+                    alert("Ocorreu um problema no servidor da planilha. Tente mais tarde.");
+                    painelTicket.style.display = "none";
+                }
+
+            } catch (erro) {
+                console.error("Erro ao enviar dados para a planilha:", erro);
+                alert("Não foi possível conectar ao sistema do sorteio. Verifique a internet.");
+                painelTicket.style.display = "none";
+            }
         }
     </script>
 
