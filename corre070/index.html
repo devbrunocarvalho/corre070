@@ -629,6 +629,58 @@
             <a href="#sobre">O Projeto</a>
             <a href="#proximo-treino">Próximo Corre</a>
             <a href="#detalhes">Diferenciais</a>
+            <!-- NOVA SEÇÃO: SORTEIO -->
+<section id="sorteio" class="container-form hidden-scroll">
+    <div class="box-formulario">
+        <h3>Participe do nosso <span>Sorteio</span></h3>
+        <form id="formSorteio" action="https://script.google.com/macros/s/AKfycbxhXrLKzLGNIL46Nzmwx_iHawXD3GMmmyBuufspVC5BCO2bbGK41CqA09Z_HVJLZ34/exec" method="POST">
+            <div class="grupo-campo">
+                <label for="nome">Nome e Sobrenome</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+            </div>
+            <div class="grupo-campo">
+                <label for="whatsapp">WhatsApp</label>
+                <input type="text" id="whatsapp" name="whatsapp" placeholder="(00) 90000-0000" required>
+            </div>
+            <button type="submit" class="ancora-botao" id="btnEnviar">
+                <i class="fa-solid fa-gift"></i> Confirmar Inscrição
+            </button>
+        </form>
+    </div>
+</section>
+
+<script>
+  const formSorteio = document.getElementById('formSorteio');
+  const btnEnviar = document.getElementById('btnEnviar');
+
+  formSorteio.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Feedback visual de envio
+    btnEnviar.innerHTML = "Enviando...";
+    btnEnviar.disabled = true;
+    
+    const formData = new FormData(formSorteio);
+    
+    fetch(formSorteio.action, {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      alert('Inscrição realizada com sucesso! Boa sorte!');
+      formSorteio.reset();
+    })
+    .catch(error => {
+      alert('Erro ao enviar. Tente novamente mais tarde.');
+      console.error('Erro:', error);
+    })
+    .finally(() => {
+      btnEnviar.innerHTML = '<i class="fa-solid fa-gift"></i> Confirmar Inscrição';
+      btnEnviar.disabled = false;
+    });
+  });
+</script>
+
             <a href="#fotos-evento">Fotos</a>
         </nav>
     </header>
