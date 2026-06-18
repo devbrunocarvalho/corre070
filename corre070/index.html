@@ -785,7 +785,7 @@
         </div>
         <div class="card hidden-scroll">
             <h3>Renata Sales</h3>
-            <p>"O professor Tonny tem o dom de motivar, inspirar e arrastar multidões. Foi incrivel e será sempre incrível! Parabéns a todos os envolvidos, especialmente a você professor Tonny, você é presente de Deus."</p>
+            <p>"O melhor foi ter me superado hoje. Fui no incentivo da minha mãe, ela tem 62 anos e lá estava, uma das primeiras correndo! Então hoje foi um orgulho e tanto. Gratidão, Deus."</p>
         </div>
     </section>
 
@@ -904,8 +904,8 @@
     </footer>
 
     <script>
-        // URL da API do seu Google Apps Script (Substitua as aspas abaixo pelo seu link)
-        const URL_GOOGLE_SCRIPT = "https://script.google.com/macros/library/d/1CtN1We-6Xy7CtNXaQZIpBsoIw8Ack_9H5w_Wdw8jS0lc4G4fEqb7XfgT/1";
+        // URL da API do seu Google Apps Script integrada com sucesso
+        const URL_GOOGLE_SCRIPT = "https://script.google.com/macros/s/AKfycbwUJFydR9V4yMinR5saIa9Nc-ZqnTWspywjTYapYK7s3ZbHRBwPJnYIg5ghCWip6A/exec";
 
         // Observador de rolagem suave (Animações de entrada)
         const observer = new IntersectionObserver((entries) => {
@@ -1033,12 +1033,6 @@
             const nomeInput = document.getElementById('sorteio-nome').value;
             const anoInput = document.getElementById('sorteio-ano').value;
             const celularInput = document.getElementById('sorteio-celular').value;
-
-            // Confere se a URL do Apps Script foi alterada
-            if (URL_GOOGLE_SCRIPT === "https://script.google.com/macros/s/AKfycbwUJFydR9V4yMinR5saIa9Nc-ZqnTWspywjTYapYK7s3ZbHRBwPJnYIg5ghCWip6A/exec") {
-                alert("Configuração incompleta: O administrador precisa configurar a URL do Google Apps Script nas linhas de código do site.");
-                return;
-            }
 
             const dadosUsuario = {
                 nome: nomeInput,
