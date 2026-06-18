@@ -731,7 +731,7 @@
 
     <section class="hero">
         <h1>Descubra o Seu <span>Próximo Nível em 2026</span></h1>
-        <p>Não importa o seu ritmo. O projeto CORRE 070 foi feito para quem quer evoluir no asfalto, superar limites e correr junto.</p>
+        <p>Não importa o seu ritmo. O projeto CORRE 070 foi feito para quem quer evoluir no asfalto, supercar limites e correr junto.</p>
         
         <div class="hero-botoes">
             <a href="https://chat.whatsapp.com/KugI861oGQK4JuZUQj1Rp4?mode=gi_t" class="btn-hero btn-principal">Entre no nosso grupo!</a>
@@ -776,7 +776,7 @@
             <h3>Naiany Brito</h3>
             <p>"Me chamo Naiany e participei da minha primeira corrida. Nunca imaginei que iria gostar tanto dessa experiência!
             Sou muito grata a Deus por me proporcionar esse momento e a todos os
-            envolvidos nessa initiative tão especial. Consegui correr no meu ritmo, me superar e para tornar tudo ainda mais especial, tive a alegria
+            envolvidos nessa initiative tão especial. Consegui correr no meu ritmo, me supercar e para tornar tudo ainda mais especial, tive a alegria
             de compartilhar esse momento ao lado da minha mãe. Foi uma experiência incrivel, cheia de aprendizado, superação e felicidade. Agora já estou ansiosa pela próxima."</p>
         </div>
         <div class="card hidden-scroll">
@@ -785,7 +785,7 @@
         </div>
         <div class="card hidden-scroll">
             <h3>Renata Sales</h3>
-            <p>"O melhor foi ter me superado hoje. Fui no incentivo da minha mãe, ela tem 62 anos e lá estava, uma das primeiras correndo! Então hoje foi um orgulho e tanto. Gratidão, Deus."</p>
+            <p>"O professor Tonny tem o dom de motivar, inspirar e arrastar multidões. Foi incrivel e será sempre incrível! Parabéns a todos os envolvidos, especialmente a você professor Tonny, você é presente de Deus."</p>
         </div>
     </section>
 
@@ -867,22 +867,17 @@
     <div id="sorteios" class="container-sorteio hidden-scroll">
         <div class="box-sorteio">
             <h3>Participe do <span>Sorteio</span></h3>
-            <p class="descricao-sorteio">Digite seu primeiro nome, o ano em que nasceu e os 4 primeiros dígitos do seu celular para gerar seu número sequencial exclusivo.</p>
+            <p class="descricao-sorteio">Digite seu nome completo e seu número de WhatsApp para gerar seu número sequencial exclusivo do sorteio.</p>
             
             <form id="form-sorteio" onsubmit="event.preventDefault();">
                 <div class="grupo-campo">
-                    <label for="sorteio-nome">Primeiro Nome</label>
-                    <input type="text" id="sorteio-nome" placeholder="Ex: Sara" required>
+                    <label for="sorteio-nome">Nome Completo</label>
+                    <input type="text" id="sorteio-nome" placeholder="Digite seu nome completo" required>
                 </div>
 
                 <div class="grupo-campo">
-                    <label for="sorteio-ano">Ano de Nascimento</label>
-                    <input type="number" id="sorteio-ano" placeholder="Ex: 1996" min="1900" max="2026" required>
-                </div>
-
-                <div class="grupo-campo">
-                    <label for="sorteio-celular">4 Primeiros Números do Celular</label>
-                    <input type="number" id="sorteio-celular" placeholder="Ex: 9997" min="1000" max="9999" required>
+                    <label for="sorteio-whatsapp">WhatsApp</label>
+                    <input type="text" id="sorteio-whatsapp" placeholder="Ex: 61999999999" required>
                 </div>
 
                 <a href="javascript:void(0);" onclick="gerarTicketSorteio()" class="ancora-botao">
@@ -893,7 +888,7 @@
                     <h4>Inscrição Confirmada!</h4>
                     <p class="aviso-ticket">Seu número oficial para o sorteio é:</p>
                     <div id="numero-ticket" class="numero-ticket">--</div>
-                    <p class="aviso-ticket">⚠️ Tire um print ou guarde esse número! Se preencher os mesmos dados novamente, seu número continuará sendo o mesmo.</p>
+                    <p class="aviso-ticket">⚠️ Tire um print ou guarde esse número! Boa sorte no sorteio.</p>
                 </div>
             </form>
         </div>
@@ -904,7 +899,6 @@
     </footer>
 
     <script>
-        // URL da API do seu Google Apps Script integrada com sucesso
         const URL_GOOGLE_SCRIPT = "https://script.google.com/macros/s/AKfycbwUJFydR9V4yMinR5saIa9Nc-ZqnTWspywjTYapYK7s3ZbHRBwPJnYIg5ghCWip6A/exec";
 
         // Observador de rolagem suave (Animações de entrada)
@@ -934,10 +928,8 @@
                 return;
             }
 
-            // Fórmula clássica da FCM (Frequência Cardíaca Máxima)
             const fcm = 220 - idade;
 
-            // Cálculos das faixas de esforço (BPM)
             const z1Min = Math.round(fcm * 0.50);
             const z1Max = Math.round(fcm * 0.60);
             const z2Min = Math.round(fcm * 0.60);
@@ -949,21 +941,18 @@
             const z5Min = Math.round(fcm * 0.90);
             const fcmMax = fcm;
 
-            // Formatação de strings
             const strZ1 = `${z1Min} - ${z1Max} bpm`;
             const strZ2 = `${z2Min} - ${z2Max} bpm`;
             const strZ3 = `${z3Min} - ${z3Max} bpm`;
             const strZ4 = `${z4Min} - ${z4Max} bpm`;
             const strZ5 = `${z5Min} - ${fcmMax} bpm`;
 
-            // Exibe os valores dinamicamente no painel visual da página
             document.getElementById('res-z1').innerText = strZ1;
             document.getElementById('res-z2').innerText = strZ2;
             document.getElementById('res-z3').innerText = strZ3;
             document.getElementById('res-z4').innerText = strZ4;
             document.getElementById('res-z5').innerText = strZ5;
 
-            // Alimenta os campos ocultos do formulário
             document.getElementById('hidden-fcm').value = `${fcm} bpm`;
             document.getElementById('hidden-z1').value = strZ1;
             document.getElementById('hidden-z2').value = strZ2;
@@ -971,26 +960,21 @@
             document.getElementById('hidden-z4').value = strZ4;
             document.getElementById('hidden-z5').value = strZ5;
 
-            // Torna o painel de resultados visível com animação simples
             document.getElementById('resultados-painel').style.display = 'block';
         }
 
-        // Validação manual e submissão através da âncora de disparo direto para o WhatsApp
         function enviarFormulario() {
             const form = document.getElementById('form-calculadora');
             
-            // Verifica se os campos obrigatórios estão preenchidos nativamente
             if (!form.checkValidity()) {
                 form.reportValidity();
                 return;
             }
 
-            // Garante que o cálculo foi executado antes do envio externo
             if (!document.getElementById('hidden-fcm').value) {
                 calcularZonasCorrida();
             }
 
-            // Coleta os dados para enviar via WhatsApp
             const nome = document.getElementById('nome').value;
             const idade = document.getElementById('idade').value;
             const fcm = document.getElementById('hidden-fcm').value;
@@ -1000,7 +984,6 @@
             const z4 = document.getElementById('hidden-z4').value;
             const z5 = document.getElementById('hidden-z5').value;
 
-            // Monta o texto codificado para a URL do WhatsApp
             const numeroTelefone = "5561981732248";
             const mensagemTexto = `Olá! Acabei de calcular minhas Zonas de Corrida no site:\n\n` +
                                   `🏃‍♂️ *Nome:* ${nome}\n` +
@@ -1015,32 +998,27 @@
                                   `Quero descobrir como medir meus batimentos corretamente!`;
 
             const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefone}&text=${encodeURIComponent(mensagemTexto)}`;
-
-            // Redireciona o usuário para o WhatsApp em uma nova aba
             window.open(urlWhatsApp, '_blank');
         }
 
-        // LÓGICA DO ENVIO DO FORMULÁRIO DE SORTEIO DIRETO PARA O GOOGLE SHEETS
+        // LÓGICA DO ENVIO DO FORMULÁRIO ATUALIZADO (APENAS NOME E WHATSAPP)
         async function gerarTicketSorteio() {
             const formSorteio = document.getElementById('form-sorteio');
 
-            // Valida se o formulário está preenchido corretamente
             if (!formSorteio.checkValidity()) {
                 formSorteio.reportValidity();
                 return;
             }
 
             const nomeInput = document.getElementById('sorteio-nome').value;
-            const anoInput = document.getElementById('sorteio-ano').value;
-            const celularInput = document.getElementById('sorteio-celular').value;
+            const whatsappInput = document.getElementById('sorteio-whatsapp').value;
 
+            // Envia exatamente o objeto que o Apps Script espera receber
             const dadosUsuario = {
                 nome: nomeInput,
-                ano: anoInput,
-                celular: celularInput
+                whatsapp: whatsappInput
             };
 
-            // Altera visualmente o painel para indicar processamento
             const painelTicket = document.getElementById('painel-ticket');
             const numeroDisplay = document.getElementById('numero-ticket');
             numeroDisplay.innerText = "Processando...";
@@ -1050,13 +1028,15 @@
                 const resposta = await fetch(URL_GOOGLE_SCRIPT, {
                     method: 'POST',
                     mode: 'cors',
+                    headers: {
+                        'Content-Type': 'text/plain' // Evita gatilho de CORS pré-flight desnecessário
+                    },
                     body: JSON.stringify(dadosUsuario)
                 });
 
                 const resultado = await resposta.json();
 
-                if (resultado.status === "sucesso" || resultado.status === "existente") {
-                    // Exibe o número sequencial retornado pela planilha
+                if (resultado.status === "sucesso") {
                     numeroDisplay.innerText = resultado.bilhete.toString().padStart(3, '0');
                 } else {
                     alert("Ocorreu um problema no servidor da planilha. Tente mais tarde.");
@@ -1070,6 +1050,5 @@
             }
         }
     </script>
-
 </body>
 </html>
