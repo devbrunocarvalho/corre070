@@ -461,7 +461,8 @@
         }
 
         .grupo-campo input[type="text"],
-        .grupo-campo input[type="number"] {
+        .grupo-campo input[type="number"],
+        .grupo-campo input[type="tel"] {
             font-family: var(--fonte-principal);
             padding: 14px 16px;
             border: 2px solid #cbd5e1;
@@ -474,7 +475,8 @@
         }
 
         .grupo-campo input[type="text"]:focus,
-        .grupo-campo input[type="number"]:focus {
+        .grupo-campo input[type="number"]:focus,
+        .grupo-campo input[type="tel"]:focus {
             border-color: var(--cor-destaque);
             box-shadow: 0 0 0 4px rgba(99, 34, 156, 0.1);
         }
@@ -500,6 +502,7 @@
             box-shadow: 0 4px 15px rgba(99, 34, 156, 0.25);
             margin-top: 10px;
             text-align: center;
+            border: none;
         }
 
         .ancora-botao:hover {
@@ -553,6 +556,44 @@
         .valores-zona {
             font-weight: 900;
             color: var(--cor-destaque);
+        }
+
+        /* --- ESTILOS EXCLUSIVOS DO FORMULÁRIO DE CAPTURA PASSO A PASSO --- */
+        .aba-passo {
+            display: none;
+        }
+        .aba-passo.ativa {
+            display: block;
+            animation: fadeIn 0.4s ease-out;
+        }
+        .texto-sucesso {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .texto-sucesso i {
+            font-size: 3.5rem;
+            color: #25d366;
+            margin-bottom: 15px;
+        }
+        .texto-sucesso p {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-top: 10px;
+        }
+        .msg-carregando {
+            display: none;
+            text-align: center;
+            color: #64748b;
+            font-weight: 700;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         footer {
@@ -746,7 +787,7 @@
                     </div>
                     <div class="item-zona">
                         <span class="nome-zona">Z3 - Moderado / Aeróbico (70% - 80%)</span>
-                        <span id="res-z3" class="valores-zona">--</span>
+                        <span id="res-z2" class="valores-zona">--</span>
                     </div>
                     <div class="item-zona">
                         <span class="nome-zona">Z4 - Limiar Anaeróbico (80% - 90%)</span>
@@ -762,6 +803,43 @@
                     Envie o Resultado e Descubra Como Medir os Batimentos <i class="fa-solid fa-paper-plane"></i>
                 </a>
             </form>
+        </div>
+    </div>
+
+    <div class="container-form hidden-scroll">
+        <div class="box-formulario" id="box-captura">
+            <h3>Garanta Sua <span>Vaga</span></h3>
+            
+            <div id="etapa-nome" class="aba-passo ativa">
+                <div class="grupo-campo">
+                    <label for="lead-nome">Nome Completo</label>
+                    <input type="text" id="lead-nome" placeholder="Digite seu nome completo">
+                </div>
+                <button type="button" onclick="avancarParaWhatsapp()" class="ancora-botao">
+                    Avançar <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div id="etapa-whatsapp" class="aba-passo">
+                <div class="grupo-campo">
+                    <label for="lead-whatsapp">Seu WhatsApp</label>
+                    <input type="tel" id="lead-whatsapp" placeholder="(00) 99999-9999">
+                </div>
+                <button type="button" onclick="enviarLeadPlanilha()" class="ancora-botao">
+                    Concluir Minha Inscrição <i class="fa-solid fa-check"></i>
+                </button>
+                <div id="lead-carregando" class="msg-carregando">
+                    <i class="fa-solid fa-spinner fa-spin"></i> Salvando sua inscrição...
+                </div>
+            </div>
+
+            <div id="etapa-sucesso" class="aba-passo">
+                <div class="texto-sucesso">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>Presença <span>Confirmada!</span></h3>
+                    <p>Seus dados foram registrados com sucesso na nossa lista oficial. Prepare o tênis e nos vemos no asfalto!</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -868,6 +946,71 @@
 
             const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefone}&text=${encodeURIComponent(mensagemTexto)}`;
             window.open(urlWhatsApp, '_blank');
+        }
+
+        // --- LÓGICA DO FORMULÁRIO DE INSCRIÇÃO PASSO A PASSO (PLANILHA) ---
+        let dadosInscricao = {
+            nome: "",
+            whatsapp: ""
+        };
+
+        // IMPORTANTE: Cole a URL gerada na implantação do seu Google Apps Script aqui dentro das aspas
+        const URL_CONECTOR_PLANILHA = "https://script.google.com/macros/s/AKfycbxkOQNv8NjfCzPjuMqfsoUPiLSKK6KGvYIiDOP7hblnGatMUI3f8lIq5Fq3GvsWnPM/exec";
+
+        function avancarParaWhatsapp() {
+            const campoNome = document.getElementById('lead-nome');
+            const nomeValor = campoNome.value.trim();
+
+            if (nomeValor === "") {
+                alert("Por favor, digite seu nome completo para continuar.");
+                campoNome.focus();
+                return;
+            }
+
+            dadosInscricao.nome = nomeValor;
+
+            // Transição visual das abas
+            document.getElementById('etapa-nome').classList.remove('ativa');
+            document.getElementById('etapa-whatsapp').classList.add('ativa');
+            document.getElementById('lead-whatsapp').focus();
+        }
+
+        function enviarLeadPlanilha() {
+            const campoWhatsapp = document.getElementById('lead-whatsapp');
+            const whatsappValor = campoWhatsapp.value.trim();
+
+            if (whatsappValor === "") {
+                alert("Por favor, informe seu número de WhatsApp.");
+                campoWhatsapp.focus();
+                return;
+            }
+
+            dadosInscricao.whatsapp = whatsappValor;
+
+            // Ativa o feedback visual de carregamento
+            const loader = document.getElementById('lead-carregando');
+            loader.style.display = "block";
+
+            // Envia a requisição assíncrona ao servidor da Google Sheets
+            fetch(URL_CONECTOR_PLANILHA, {
+                method: "POST",
+                mode: "no-cors", 
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dadosInscricao)
+            })
+            .then(() => {
+                // Sucesso na execução
+                loader.style.display = "none";
+                document.getElementById('etapa-whatsapp').classList.remove('ativa');
+                document.getElementById('etapa-sucesso').classList.add('ativa');
+            })
+            .catch((error) => {
+                console.error("Erro no envio:", error);
+                loader.style.display = "none";
+                alert("Houve uma oscilação na rede ao salvar seus dados. Por favor, clique novamente para tentar de novo.");
+            });
         }
     </script>
 </body>
