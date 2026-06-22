@@ -12,7 +12,7 @@
         /* --- VARIÁVEIS DE COR E CONFIGURAÇÕES GERAIS --- */
         :root {
             --cor-principal: #000000;      
-            --cor-destaque: #63229c;       
+            --cor-destaque: #63229c;        
             --cor-destaque-neon: #ff1008;  
             --cor-fundo: #FFFFFF;          
             --cor-fundo-suave: #F4F4F9;    
@@ -686,7 +686,7 @@
 
     <section id="sobre" class="sobre hidden-scroll">
         <h2 class="secao-titulo">Sobre o c<span>O</span>RRE07<span>0</span></h2>
-        <p>Inspirado no movement urbano e na paixão pela corrida, trouxemos para <span>Águas Lindas</span> o CORRE 070 que une atletas de todos os níveis. Nosso foco é evolução constante, saúde, música e a energia do asfalto. Venha fazer parte dessa comunidade que não para de crescer.</p>
+        <p>Inspirado no movimento urbano urbano e na paixão pela corrida, trouxemos para <span>Águas Lindas</span> o CORRE 070 que une atletas de todos os níveis. Nosso foco é evolução constante, saúde, música e a energia do asfalto. Venha fazer parte dessa comunidade que não para de crescer.</p>
     </section>
 
     <section id="proximo-treino" class="onde-quando hidden-scroll">
@@ -771,9 +771,9 @@
                 <input type="hidden" id="hidden-z4" name="Zona_4_Limiar_Anaerobico">
                 <input type="hidden" id="hidden-z5" name="Zona_5_Esforco_Maximo">
 
-                <a href="javascript:void(0);" onclick="calcularZonasCorrida()" class="ancora-botao btn-secundario">
+                <button type="button" onclick="calcularZonasCorrida()" class="ancora-botao btn-secundario">
                     Calcular Zonas <i class="fa-solid fa-calculator"></i>
-                </a>
+                </button>
 
                 <div id="resultados-painel" class="resultados-zonas">
                     <h4>Suas Zonas de Treino (BPM)</h4>
@@ -787,7 +787,7 @@
                     </div>
                     <div class="item-zona">
                         <span class="nome-zona">Z3 - Moderado / Aeróbico (70% - 80%)</span>
-                        <span id="res-z2" class="valores-zona">--</span>
+                        <span id="res-z3" class="valores-zona">--</span>
                     </div>
                     <div class="item-zona">
                         <span class="nome-zona">Z4 - Limiar Anaeróbico (80% - 90%)</span>
@@ -799,9 +799,9 @@
                     </div>
                 </div>
 
-                <a href="javascript:void(0);" onclick="enviarFormulario()" class="ancora-botao" style="margin-top: 20px;">
+                <button type="button" onclick="enviarFormulario()" class="ancora-botao" style="margin-top: 20px;">
                     Envie o Resultado e Descubra Como Medir os Batimentos <i class="fa-solid fa-paper-plane"></i>
-                </a>
+                </button>
             </form>
         </div>
     </div>
