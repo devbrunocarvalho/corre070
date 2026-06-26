@@ -714,6 +714,43 @@
                 <a href="https://www.google.com/maps/place/Pra%C3%A7a+da+B%C3%ADblia+%C3%81guas+Lindas+de+Goi%C3%A1s/@-15.7188327,-48.2884556,17z/data=!3m1!4b1!4m6!3m5!1s0x935bb99d001689ff:0x94e8295ec504a9ad!8m2!3d-15.7188327!4d-48.2858807!16s%2Fg%2F11ghsgt6m3?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="link-mapa">Ver no mapa <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
+          <div class="container-form hidden-scroll">
+        <div class="box-formulario" id="box-captura">
+            <h3>Inscreva-se no Próximo<span>CORRE070</span>!</h3>
+            
+            <div id="etapa-nome" class="aba-passo ativa">
+                <div class="grupo-campo">
+                    <label for="lead-nome">Nome Completo</label>
+                    <input type="text" id="lead-nome" placeholder="Digite seu nome completo">
+                </div>
+                <button type="button" onclick="avancarParaWhatsapp()" class="ancora-botao">
+                    Avançar <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div id="etapa-whatsapp" class="aba-passo">
+                <div class="grupo-campo">
+                    <label for="lead-whatsapp">Seu WhatsApp</label>
+                    <input type="tel" id="lead-whatsapp" placeholder="(00) 99999-9999">
+                </div>
+                <button type="button" onclick="enviarLeadPlanilha()" class="ancora-botao">
+                    Concluir e autorizar o recebimento de promoções e atualizações do Corre070 e dos Parceiros. <i class="fa-solid fa-check"></i>
+                </button>
+                <div id="lead-carregando" class="msg-carregando">
+                    <i class="fa-solid fa-spinner fa-spin"></i> Salvando...
+                </div>
+            </div>
+
+            <div id="etapa-sucesso" class="aba-passo">
+                <div class="texto-sucesso">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>Vaga <span>Confirmada!</span></h3>
+                    <p>Seus dados foram registrados com sucesso na nossa lista oficial. Prepare o tênis e nos vemos no asfalto!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </section>
 
     <section id="detalhes" class="detalhes">
@@ -803,43 +840,6 @@
                     Envie o Resultado e Descubra Como Medir os Batimentos <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </form>
-        </div>
-    </div>
-
-    <div class="container-form hidden-scroll">
-        <div class="box-formulario" id="box-captura">
-            <h3>Participe dos <span>Sorteios</span>!</h3>
-            
-            <div id="etapa-nome" class="aba-passo ativa">
-                <div class="grupo-campo">
-                    <label for="lead-nome">Nome Completo</label>
-                    <input type="text" id="lead-nome" placeholder="Digite seu nome completo">
-                </div>
-                <button type="button" onclick="avancarParaWhatsapp()" class="ancora-botao">
-                    Avançar <i class="fa-solid fa-chevron-right"></i>
-                </button>
-            </div>
-
-            <div id="etapa-whatsapp" class="aba-passo">
-                <div class="grupo-campo">
-                    <label for="lead-whatsapp">Seu WhatsApp</label>
-                    <input type="tel" id="lead-whatsapp" placeholder="(00) 99999-9999">
-                </div>
-                <button type="button" onclick="enviarLeadPlanilha()" class="ancora-botao">
-                    Concluir e autorizar o recebimento de promoções e atualizações do Corre070 e dos Parceiros. <i class="fa-solid fa-check"></i>
-                </button>
-                <div id="lead-carregando" class="msg-carregando">
-                    <i class="fa-solid fa-spinner fa-spin"></i> Salvando...
-                </div>
-            </div>
-
-            <div id="etapa-sucesso" class="aba-passo">
-                <div class="texto-sucesso">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <h3>Chance <span>Confirmada!</span></h3>
-                    <p>Seus dados foram registrados com sucesso na nossa lista oficial. Prepare o tênis e nos vemos no asfalto!</p>
-                </div>
-            </div>
         </div>
     </div>
 
