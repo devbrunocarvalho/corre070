@@ -13,9 +13,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* ==========================================================
-       1. VARIÁVEIS DE CORES (EXTRAÍDAS DA LOGOMARCA CORRE 070)
-       ========================================================== */
     :root {
       --purple-primary: #462371;
       --purple-dark: #200f38;
@@ -28,7 +25,6 @@
       --text-muted: #a0a0b0;
     }
 
-    /* Reset global */
     * {
       margin: 0;
       padding: 0;
@@ -54,9 +50,7 @@
       color: inherit;
     }
 
-    /* ==========================================================
-       2. CABEÇALHO / NAVBAR
-       ========================================================== */
+    /* ===========================================   ========================================================== */
     header {
       position: fixed;
       top: 0;
@@ -87,6 +81,7 @@
       display: flex;
       list-style: none;
       gap: 25px;
+      align-items: center;
     }
 
     nav ul li a {
@@ -115,6 +110,15 @@
       width: 100%;
     }
 
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-light);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
     /* ==========================================================
        3. SEÇÃO INÍCIO (HERO)
        ========================================================== */
@@ -126,7 +130,6 @@
       justify-content: center;
       text-align: center;
       padding: 130px 20px 60px 20px;
-      /* Imagem de fundo com gradiente escuro */
       background: linear-gradient(rgba(17, 17, 20, 0.8), rgba(70, 35, 113, 0.85)), 
                   url('https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
     }
@@ -137,7 +140,7 @@
     }
 
     .hero-title {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-size: clamp(2.2rem, 5.5vw, 4.5rem);
       font-weight: 900;
       letter-spacing: 2px;
       margin-bottom: 15px;
@@ -146,7 +149,7 @@
     }
 
     .hero-subtitle {
-      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-size: clamp(1rem, 2vw, 1.35rem);
       color: #e0e0e0;
       margin-bottom: 35px;
       font-weight: 400;
@@ -170,9 +173,9 @@
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       display: inline-block;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      text-align: center;
     }
 
-    /* Âncora 1: Entre no Nosso Grupo */
     .btn-group {
       background-color: var(--red-accent);
       color: #fff;
@@ -186,7 +189,6 @@
       box-shadow: 0 8px 25px rgba(179, 42, 54, 0.5);
     }
 
-    /* Âncora 2: Conheça a TFX */
     .btn-tfx {
       background-color: transparent;
       color: #fff;
@@ -202,16 +204,16 @@
 
     /* Estilo genérico de seções */
     .section-padding {
-      padding: 90px 5%;
+      padding: 80px 5%;
     }
 
     .section-header {
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
 
     .section-header h2 {
-      font-size: 2.2rem;
+      font-size: clamp(1.8rem, 4vw, 2.2rem);
       color: var(--text-light);
       position: relative;
       display: inline-block;
@@ -306,39 +308,58 @@
       max-width: 500px;
       margin: 0 auto;
       background-color: var(--bg-card);
-      padding: 40px;
+      padding: 30px 25px;
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,0.05);
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-    .form-group {
+    .box-formulario h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .box-formulario h3 span {
+      color: var(--red-accent);
+    }
+
+    .aba-passo {
+      display: none;
+    }
+
+    .aba-passo.ativa {
+      display: block;
+    }
+
+    .grupo-campo {
       margin-bottom: 20px;
     }
 
-    .form-group label {
+    .grupo-campo label {
       display: block;
       margin-bottom: 8px;
       font-weight: 600;
+      font-size: 0.95rem;
     }
 
-    .form-group input {
+    .grupo-campo input {
       width: 100%;
       padding: 14px;
       border-radius: 8px;
       border: 1px solid rgba(255, 255, 255, 0.15);
-      background: rgba(0,0,0,0.4);
+      background: #111;
       color: #fff;
       font-size: 1rem;
       outline: none;
       transition: border-color 0.3s ease;
     }
 
-    .form-group input:focus {
+    .grupo-campo input:focus {
       border-color: var(--red-accent);
     }
 
-    .btn-submit {
+    .ancora-botao {
       width: 100%;
       background: var(--red-accent);
       color: #fff;
@@ -346,15 +367,38 @@
       padding: 14px;
       border-radius: 8px;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 0.95rem;
       cursor: pointer;
       transition: background 0.3s ease;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
-    .btn-submit:hover {
+    .ancora-botao:hover {
       background: var(--red-hover);
+    }
+
+    .msg-carregando {
+      display: none;
+      margin-top: 20px;
+      text-align: center;
+      color: var(--yellow-accent);
+    }
+
+    .texto-sucesso {
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    .texto-sucesso i {
+      font-size: 60px;
+      color: #22c55e;
+      margin-bottom: 15px;
+    }
+
+    .texto-sucesso h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
     }
 
     /* ==========================================================
@@ -411,7 +455,7 @@
       display: flex;
       align-items: center;
       gap: 15px;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
 
     .detail-item i {
@@ -431,13 +475,12 @@
     .photos-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 50px;
+      gap: 40px;
       align-items: center;
       max-width: 1000px;
       margin: 0 auto;
     }
 
-    /* Fotos espalhadas na mesa */
     .table-photos {
       position: relative;
       height: 380px;
@@ -448,8 +491,8 @@
 
     .table-photo {
       position: absolute;
-      width: 230px;
-      height: 270px;
+      width: 210px;
+      height: 250px;
       background: #fff;
       padding: 10px 10px 40px 10px;
       border-radius: 4px;
@@ -465,7 +508,6 @@
       border-radius: 2px;
     }
 
-    /* Rotacionamento das 3 fotos estilo polaroid na mesa */
     .table-photo:nth-child(1) {
       transform: rotate(-12deg) translate(-30px, -10px);
       z-index: 1;
@@ -491,7 +533,7 @@
     }
 
     .photos-info p {
-      font-size: 1.4rem;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
       font-weight: 600;
       line-height: 1.4;
     }
@@ -509,7 +551,6 @@
       text-transform: uppercase;
     }
 
-    /* Efeito Amarelo ao passar o mouse */
     .btn-photo-buy:hover {
       background-color: var(--yellow-accent);
       color: #000;
@@ -528,7 +569,7 @@
     .calc-box {
       max-width: 600px;
       margin: 0 auto;
-      padding: 50px 20px;
+      padding: 40px 20px;
       background: rgba(255,255,255,0.03);
       border-radius: 12px;
       border: 1px dashed rgba(255,255,255,0.2);
@@ -547,29 +588,101 @@
     }
 
     /* ==========================================================
-       10. RESPONSIVIDADE
+       10. REGRAS DE RESPONSIVIDADE (MEDIA QUERIES)
        ========================================================== */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px;
-      }
-      nav ul {
-        gap: 12px;
-        font-size: 0.85rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .event-card-modern {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 992px) {
       .photos-layout {
         grid-template-columns: 1fr;
-        text-align: center;
+        gap: 30px;
       }
       .photos-info {
         align-items: center;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(17, 17, 20, 0.98);
+        border-bottom: 2px solid var(--purple-primary);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+      }
+
+      nav.active {
+        max-height: 300px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 15px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .event-card-modern {
+        grid-template-columns: 1fr;
+      }
+
+      .event-badge-date {
+        padding: 20px;
+      }
+
+      .event-badge-date .day {
+        font-size: 3rem;
+      }
+
+      .event-details {
+        padding: 25px 20px;
+      }
+
+      .section-padding {
+        padding: 60px 20px;
+      }
+
+      .table-photos {
+        height: 300px;
+      }
+
+      .table-photo {
+        width: 170px;
+        height: 210px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sponsors-container {
+        gap: 12px;
+      }
+      .sponsor-card {
+        min-width: 100px;
+        height: 65px;
+      }
+      .form-container {
+        padding: 25px 15px;
       }
     }
   </style>
@@ -583,13 +696,18 @@
         <img src="logopng.png" alt="CORRE 070">
       </a>
     </div>
-    <nav>
+    
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav id="nav-menu">
       <ul>
-        <li><a href="#inicio">Início</a></li>
-        <li><a href="#inscricao">Inscrição</a></li>
-        <li><a href="#proximo-evento">Próximo Evento</a></li>
-        <li><a href="#fotos">Fotos</a></li>
-        <li><a href="#calculadora">Calculadora de Zona</a></li>
+        <li><a href="#inicio" class="nav-link">Início</a></li>
+        <li><a href="#inscricao" class="nav-link">Inscrição</a></li>
+        <li><a href="#proximo-evento" class="nav-link">Próximo Evento</a></li>
+        <li><a href="#fotos" class="nav-link">Fotos</a></li>
+        <li><a href="#calculadora" class="nav-link">Calculadora de Zona</a></li>
       </ul>
     </nav>
   </header>
@@ -613,7 +731,6 @@
     <p class="section-subtitle-sm">PATROCINADORES</p>
     <div class="sponsors-wrapper">
       <div class="sponsors-container">
-        <!-- 10 Âncoras com links '#' e imagens -->
         <a href="#" class="sponsor-card"><img src="https://via.placeholder.com/120x60/ffffff/000000?text=PATROCINADOR+1" alt="Patrocinador 1"></a>
         <a href="#" class="sponsor-card"><img src="https://via.placeholder.com/120x60/ffffff/000000?text=PATROCINADOR+2" alt="Patrocinador 2"></a>
         <a href="#" class="sponsor-card"><img src="https://via.placeholder.com/120x60/ffffff/000000?text=PATROCINADOR+3" alt="Patrocinador 3"></a>
@@ -629,188 +746,22 @@
   </section>
 
   <!-- SEÇÃO INSCRIÇÃO -->
-  <div class="container-form hidden-scroll">
-    <div class="box-formulario" id="box-captura">
+  <section id="inscricao" class="section-padding">
+    <div class="form-container">
+      <div class="box-formulario" id="box-captura">
         <h3>Inscreva-se no Próximo<span> CORRE070</span>!</h3>
         
         <div id="etapa-nome" class="aba-passo ativa">
-            <div class="grupo-campo">
-                <label for="lead-nome">Nome Completo</label>
-                <input type="text" id="lead-nome" placeholder="Digite seu nome completo">
-            </div>
-            <button type="button" onclick="avancarParaWhatsapp()" class="ancora-botao">
-                Avançar <i class="fa-solid fa-chevron-right"></i>
-            </button>
+          <div class="grupo-campo">
+            <label for="lead-nome">Nome Completo</label>
+            <input type="text" id="lead-nome" placeholder="Digite seu nome completo">
+          </div>
+          <button type="button" onclick="avancarParaWhatsapp()" class="ancora-botao">
+            Avançar <i class="fa-solid fa-chevron-right"></i>
+          </button>
         </div>
 
         <div id="etapa-whatsapp" class="aba-passo">
-            <div class="grupo-campo">
-                <label for="lead-whatsapp">Seu WhatsApp</label>
-                <input type="tel" id="lead-whatsapp" placeholder="(00) 99999-9999">
-            </div>
-            <button type="button" onclick="enviarLeadPlanilha()" class="ancora-botao">
-                Concluir e autorizar o recebimento de promoções e atualizações do Corre070 e dos Parceiros. <i class="fa-solid fa-check"></i>
-            </button>
-            <div id="lead-carregando" class="msg-carregando">
-                <i class="fa-solid fa-spinner fa-spin"></i> Salvando...
-            </div>
-        </div>
-
-        <div id="etapa-sucesso" class="aba-passo">
-            <div class="texto-sucesso">
-                <i class="fa-solid fa-circle-check"></i>
-                <h3>Vaga <span>Confirmada!</span></h3>
-                <p>Seus dados foram registrados com sucesso na nossa lista oficial. Prepare o tênis e nos vemos no asfalto!</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-  <!-- SEÇÃO PRÓXIMO EVENTO -->
-  <section id="proximo-evento" class="section-padding">
-    <div class="section-header">
-      <h2>Próximo Evento</h2>
-    </div>
-    <div class="event-card-modern">
-      <div class="event-badge-date">
-        <span class="day">28</span>
-        <span class="month">Julho</span>
-      </div>
-      <div class="event-details">
-        <div class="detail-item">
-          <i class="fa-regular fa-clock"></i>
-          <span><strong>Horário:</strong> 19h</span>
-        </div>
-        <div class="detail-item">
-          <i class="fa-solid fa-location-dot"></i>
-          <span><strong>Local:</strong> Praça da Bíblia em Águas Lindas</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SEÇÃO FOTOS -->
-  <section id="fotos" class="section-padding">
-    <div class="section-header">
-      <h2>Fotos</h2>
-    </div>
-    <div class="photos-layout">
-      <!-- 3 Fotos empilhadas/espalhadas estilo mesa -->
-      <div class="table-photos">
-        <div class="table-photo">
-          <img src="https://images.unsplash.com/photo-1530541930197-ff16ac917b0e?q=80&w=500&auto=format&fit=crop" alt="Foto da corrida 1">
-        </div>
-        <div class="table-photo">
-          <img src="https://images.unsplash.com/photo-1516135293233-a3d548325a1e?q=80&w=500&auto=format&fit=crop" alt="Foto da corrida 2">
-        </div>
-        <div class="table-photo">
-          <img src="https://images.unsplash.com/photo-1486218119243-13883505764c?q=80&w=500&auto=format&fit=crop" alt="Foto da corrida 3">
-        </div>
-      </div>
-
-      <!-- Informação e Âncora com Hover Amarelo -->
-      <div class="photos-info">
-        <p>Confira as fotos que o <strong>@gustavo</strong> tirou</p>
-        <a href="#" class="btn-photo-buy">Compre a sua foto aqui</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SEÇÃO CALCULADORA DE ZONA -->
-  <section id="calculadora" class="section-padding">
-    <div class="section-header">
-      <h2>Calculadora de Zona</h2>
-    </div>
-    <div class="calc-box">
-      <h3>calculadora de zona</h3>
-    </div>
-  </section>
-
-  <!-- RODAPÉ -->
-  <footer>
-    <p>Pedro 5:7</p>
-  </footer>
-
-  <!-- JAVASCRIPT -->
-  <script>
-    // Navegação suave ao clicar nos links do menu
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-        if (targetId !== '#') {
-          e.preventDefault();
-          const targetSection = document.querySelector(targetId);
-          if (targetSection) {
-            targetSection.scrollIntoView({
-              behavior: 'smooth'
-            });
-          }
-        }
-      });
-    });
-    let dadosInscricao = {
-            nome: "",
-            whatsapp: ""
-        };
-
-        // IMPORTANTE: Cole a URL gerada na implantação do seu Google Apps Script aqui dentro das aspas
-        const URL_CONECTOR_PLANILHA = "https://script.google.com/macros/s/AKfycbxkOQNv8NjfCzPjuMqfsoUPiLSKK6KGvYIiDOP7hblnGatMUI3f8lIq5Fq3GvsWnPM/exec";
-
-        function avancarParaWhatsapp() {
-            const campoNome = document.getElementById('lead-nome');
-            const nomeValor = campoNome.value.trim();
-
-            if (nomeValor === "") {
-                alert("Por favor, digite seu nome completo para continuar.");
-                campoNome.focus();
-                return;
-            }
-
-            dadosInscricao.nome = nomeValor;
-
-            // Transição visual das abas
-            document.getElementById('etapa-nome').classList.remove('ativa');
-            document.getElementById('etapa-whatsapp').classList.add('ativa');
-            document.getElementById('lead-whatsapp').focus();
-        }
-
-        function enviarLeadPlanilha() {
-            const campoWhatsapp = document.getElementById('lead-whatsapp');
-            const whatsappValor = campoWhatsapp.value.trim();
-
-            if (whatsappValor === "") {
-                alert("Por favor, informe seu número de WhatsApp.");
-                campoWhatsapp.focus();
-                return;
-            }
-
-            dadosInscricao.whatsapp = whatsappValor;
-
-            // Ativa o feedback visual de carregamento
-            const loader = document.getElementById('lead-carregando');
-            loader.style.display = "block";
-
-            // Envia a requisição assíncrona ao servidor da Google Sheets
-            fetch(URL_CONECTOR_PLANILHA, {
-                method: "POST",
-                mode: "no-cors", 
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(dadosInscricao)
-            })
-            .then(() => {
-                // Sucesso na execução
-                loader.style.display = "none";
-                document.getElementById('etapa-whatsapp').classList.remove('ativa');
-                document.getElementById('etapa-sucesso').classList.add('ativa');
-            })
-            .catch((error) => {
-                console.error("Erro no envio:", error);
-                loader.style.display = "none";
-                alert("Houve uma oscilação na rede ao salvar seus dados. Por favor, clique novamente para tentar de novo.");
-            });
-        }
-  </script>
-</body>
-</html>
+          <div class="grupo-campo">
+            <label for="lead-whatsapp">Seu WhatsApp</label>
+           
