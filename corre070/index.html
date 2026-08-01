@@ -775,4 +775,166 @@
           </div>
         </div>
   </div>
+      .
+  <!-- SEÇÃO PRÓXIMO EVENTO -->
+  <section id="proximo-evento" class="section-padding">
+    <div class="section-header">
+      <h2>Próximo Evento</h2>
+    </div>
+    <div class="event-card-modern">
+      <div class="event-badge-date">
+        <span class="day">11</span>
+        <span class="month">Agosto</span>
+      </div>
+      <div class="event-details">
+        <div class="detail-item">
+          <i class="fa-regular fa-clock"></i>
+          <span><strong>Horário:</strong> 19h</span>
+        </div>
+        <div class="detail-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span><strong>Local:</strong> Praça da Bíblia em Águas Lindas</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO FOTOS -->
+  <section id="fotos" class="section-padding">
+    <div class="section-header">
+      <h2>Fotos</h2>
+    </div>
+    <div class="photos-layout">
+      <div class="table-photos">
+        <div class="table-photo">
+          <img src="./ab.jpg" alt="Foto da corrida 1">
+        </div>
+        <div class="table-photo">
+          <img src="./ac.jpg" alt="Foto da corrida 2">
+        </div>
+        <div class="table-photo">
+          <img src="./ad.jpg" alt="Foto da corrida 3">
+        </div>
+      </div>
+
+      <div class="photos-info">
+        <p>Confira as fotos que o <strong>@g.oliveira61</strong> tirou</p>
+        <a href="https://ghoa.focoradical.com.br/evento/20260728-corre-070-5a-edicao-aguas-lindas-de-goias-24706?loja=24706" class="btn-photo-buy">Compre a sua foto aqui</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Pedro 5:7</p><br>
+  PROJETO DESENVOLVIDO PELA TFX.<br>
+    MÍDIA E REDES SOCIAIS POR AGÊNCIA MAESTRIA.<br>
+    ARTES, SITES E IMPRESSOS POR BRUNO CARVALHO.
+    
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Toggle Menu Mobile
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navMenu = document.getElementById('nav-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Fechar menu ao clicar em um link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Navegação suave ao clicar nos links do menu
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId !== '#') {
+          e.preventDefault();
+          const targetSection = document.querySelector(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    let dadosInscricao = {
+      nome: "",
+      whatsapp: ""
+    };
+
+    const URL_CONECTOR_PLANILHA = "https://script.google.com/macros/s/AKfycbxkOQNv8NjfCzPjuMqfsoUPiLSKK6KGvYIiDOP7hblnGatMUI3f8lIq5Fq3GvsWnPM/exec";
+
+    function avancarParaWhatsapp() {
+      const campoNome = document.getElementById('lead-nome');
+      const nomeValor = campoNome.value.trim();
+
+      if (nomeValor === "") {
+        alert("Por favor, digite seu nome completo para continuar.");
+        campoNome.focus();
+        return;
+      }
+
+      dadosInscricao.nome = nomeValor;
+
+      document.getElementById('etapa-nome').classList.remove('ativa');
+      document.getElementById('etapa-whatsapp').classList.add('ativa');
+      document.getElementById('lead-whatsapp').focus();
+    }
+
+    function enviarLeadPlanilha() {
+      const campoWhatsapp = document.getElementById('lead-whatsapp');
+      const whatsappValor = campoWhatsapp.value.trim();
+
+      if (whatsappValor === "") {
+        alert("Por favor, informe seu número de WhatsApp.");
+        campoWhatsapp.focus();
+        return;
+      }
+
+      dadosInscricao.whatsapp = whatsappValor;
+
+      const loader = document.getElementById('lead-carregando');
+      loader.style.display = "block";
+
+      fetch(URL_CONECTOR_PLANILHA, {
+        method: "POST",
+        mode: "no-cors", 
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dadosInscricao)
+      })
+      .then(() => {
+        loader.style.display = "none";
+        document.getElementById('etapa-whatsapp').classList.remove('ativa');
+        document.getElementById('etapa-sucesso').classList.add('ativa');
+      })
+      .catch((error) => {
+        console.error("Erro no envio:", error);
+        loader.style.display = "none";
+        alert("Houve uma oscilação na rede ao salvar seus dados. Por favor, tente novamente.");
+      });
+    }
+
+    // Máscara de Telefone
+    const telefone = document.getElementById('lead-whatsapp');
+    if (telefone) {
+      telefone.addEventListener('input', e => {
+        let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+        if (v.length > 6) v = v.replace(/^(\d{2})(\d{5})(\d+)/, '($1) $2-$3');
+        else if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '($1) $2');
+        e.target.value = v;
+      });
+    }
+  </script>
+</body>
+  </html>
   
